@@ -1,6 +1,9 @@
 FROM alpine:3.4
 MAINTAINER James Phillips <james@hashicorp.com> (@slackpad)
 
+# Add curl and bash
+RUN apk update && apk add curl
+
 # This is the release of Consul to pull in.
 ENV CONSUL_VERSION=0.6.4
 
