@@ -40,7 +40,7 @@ fi
 CONSUL_ADVERTISE=
 if [ -z "$CONSUL_ADVERTISE" ]; then
   CONSUL_ADVERTISE_ADDRESS=$(curl 169.254.169.254/latest/meta-data/local-ipv4 2> /dev/null)
-  if [ -n "$CONSUL_ADVERTISE_ADDRESS" ]; then
+  if [ -z "$CONSUL_ADVERTISE_ADDRESS" ]; then
     echo "Could not find IP to advertise, exiting"
     exit 1
   fi
