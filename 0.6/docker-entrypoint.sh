@@ -45,7 +45,7 @@ if [ -z "$CONSUL_ADVERTISE" ]; then
     exit 1
   fi
 
-  CONSUL_ADVERTISE="-advertise=$CONSUL_ADVERTISE_ADDRESS"
+  CONSUL_ADVERTISE="-advertise=$CONSUL_ADVERTISE_ADDRESS -advertise-wan=$CONSUL_ADVERTISE_ADDRESS"
   echo "==> Found address '$CONSUL_ADVERTISE_ADDRESS' to advertise, setting advertise option..."
 fi
 
