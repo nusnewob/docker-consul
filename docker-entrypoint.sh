@@ -39,13 +39,13 @@ fi
 # Fix AWS ECS
 CONSUL_ADVERTISE=
 if [ -z "$CONSUL_ADVERTISE" ]; then
-  CONSUL_ADVERTISE_ADDRESS=$(curl 169.254.169.254/latest/meta-data/local-ipv4 2> /dev/null)
+  CONSUL_ADVERTISE_ADDRESS=$(curl -Lfs 169.254.169.254/latest/meta-data/local-ipv4)
   if [ -z "$CONSUL_ADVERTISE_ADDRESS" ]; then
     echo "Could not find IP to advertise, exiting"
     exit 1
   fi
 
-  CONSUL_ADVERTISE="-advertise=$CONSUL_ADVERTISE_ADDRESS -advertise-wan=$CONSUL_ADVERTISE_ADDRESS"
+  CONSUL_ADVERTISE="-advertise=$CONSUL_ADVERTISE_ADDRESS"
   echo "==> Found address '$CONSUL_ADVERTISE_ADDRESS' to advertise, setting advertise option..."
 fi
 
